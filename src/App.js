@@ -1,23 +1,23 @@
 import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { localStorageData } from './localStorage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MonthlyBudgetView from './Views/MonthlyBudgetView';
 
+
+
+//navbar at top for buget / transactions / main <---- use list component tabs instead of navbar maybe
+//accounts overview swipes from left
+
+ 
 function App() {
+  const [selectedMonth, setSelectedMonth] = useState('jan_2021');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="currentView" >
+      <MonthlyBudgetView month={localStorageData.months[selectedMonth]}/>
+      </div>
     </div>
   );
 }
