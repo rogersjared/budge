@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
-import { localStorageData } from './localStorage';
+import localStorageData from './localStorage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MonthlyBudgetView from './Views/MonthlyBudgetView';
 
@@ -12,6 +11,9 @@ import MonthlyBudgetView from './Views/MonthlyBudgetView';
  
 function App() {
   const [selectedMonth, setSelectedMonth] = useState('jan_2021');
+  const [accounts, updateAccounts] = useState(localStorageData.accounts);
+  const [monthData, updateMonthData] = useState(localStorageData.months);
+
 
   return (
     <div className="App">

@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 
 const appContext = createContext();
 
-const retrieveLocalStorage = () => {
+const GetLocalStorage = () => {
   const data = useContext(appContext);
   return data;
 };
@@ -26,19 +26,29 @@ const localStorageData = {
   },
   months: {
     jan_2021: {
+      monthName: 'Jan',
+      monthYear: 2021,
       income: 0,
       spent: 0,
-      categories: [{
-        name: '',
-        budgeted: 0,
-        funded: 0, 
-        spent: 0,
-      }, {
-        name: '',
-        budgeted: 0,
-        funded: 0, 
-        spent: 0,
-      }],
+      categories: {
+        variable: [{
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }, {
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }],
+        monthly: [{
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }]
+      },
       transactions: [{
         month: 'jan_2021',
         category: '',
@@ -48,19 +58,29 @@ const localStorageData = {
       }]
     },
     feb_2021: {
+      monthName: 'Feb',
+      monthYear: 2021,
       income: 0,
       spent: 0,
-      categories: [{
-        name: '',
-        budgeted: 0,
-        funded: 0, 
-        spent: 0,
-      }, {
-        name: '',
-        budgeted: 0,
-        funded: 0, 
-        spent: 0,
-      }],
+      categories: {
+        variable: [{
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }, {
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }],
+        monthly: [{
+          name: '',
+          budgeted: 0,
+          funded: 0, 
+          spent: 0,
+        }]
+      },
       transactions: [{
         month: 'feb_2021',
         timestamp: '',
@@ -73,5 +93,4 @@ const localStorageData = {
   }
 }
 
-export { localStorage, retrieveLocalStorage, localStorageData };
-export default retrieveLocalStorage;
+export default localStorageData;

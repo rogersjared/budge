@@ -4,7 +4,7 @@ import CategoryGroup from '../Components/MonthlyBudgetComps/CategoryGroup.jsx';
 
 const MonthlyBudgetView = ({ month }) => {
     const { income, spent, categories } = month;
-
+    console.log('categories from monthly view', categories)
     return (
         <>
             <ListGroup horizontal>
@@ -19,9 +19,8 @@ const MonthlyBudgetView = ({ month }) => {
                 <ListGroup.Item>Income available for Funding</ListGroup.Item>
                 <ListGroup.Item>$xxx</ListGroup.Item>
             </ListGroup>
-            
-            <CategoryGroup />
-            <CategoryGroup />
+            <CategoryGroup type='Variable' categories={categories.variable} />
+            <CategoryGroup type='Monthly' categories={categories.monthly} />
         </>
     );
 };

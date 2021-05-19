@@ -1,23 +1,24 @@
 import Table from 'react-bootstrap/Table'
 import CategoryEntry from './CategoryEntry.jsx';
 
-const CategoryGroup = () => {
+const CategoryGroup = ({ type, categories }) => {
 
     return (
         <>
-        <h3>Category Name</h3>
+        <h3>{type}</h3>
         <Table striped bordered hover>
             <thead>
                 <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Category</th>
+                <th>Budgeted</th>
+                <th>Funded</th>
+                <th>Available to Spend</th>
                 </tr>
             </thead>
             <tbody>
-                <CategoryEntry />
-                <CategoryEntry />
+                {categories.map((category, index) => (
+                    <CategoryEntry category={category} key={index} />
+                ))}
             </tbody>
         </Table>
         </>

@@ -1,13 +1,13 @@
 import Table from 'react-bootstrap/Table'
 
 
-const CategoryEntry = () => {
+const CategoryEntry = ({category}) => {
     return (
         <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>{category.name}</td>
+            <td>{category.budgeted}</td>
+            <td>{category.funded}</td>
+            <td>{category.funded - category.spent}</td>
         </tr>
     )
 }
