@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react';
 
-const appContext = createContext();
+const localStorage = createContext();
 
 const GetLocalStorage = () => {
-  const data = useContext(appContext);
+  const data = useContext(localStorage);
   return data;
 };
 
@@ -25,11 +25,13 @@ const localStorageData = {
     loans: []
   },
   months: {
-    jan_2021: {
-      monthName: 'Jan',
-      monthYear: 2021,
-      income: 0,
-      spent: 0,
+    '5-2021': {
+      data: {
+        monthName: 'May',
+        monthYear: 2021,
+        income: 0,
+        spent: 0,
+      },
       categories: {
         variable: [{
           name: '',
@@ -57,11 +59,13 @@ const localStorageData = {
         type: 'income'
       }]
     },
-    feb_2021: {
-      monthName: 'Feb',
-      monthYear: 2021,
-      income: 0,
-      spent: 0,
+    '4-2021': {
+      data: {
+        monthName: 'April',
+        monthYear: 2021,
+        income: 0,
+        spent: 0,
+      },
       categories: {
         variable: [{
           name: '',
@@ -93,4 +97,5 @@ const localStorageData = {
   }
 }
 
+export { localStorage, GetLocalStorage, localStorageData };
 export default localStorageData;

@@ -1,26 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import localStorageData from './localStorage';
+import React, { useState, useEffect, useReducer } from 'react';
+import { localStorageData, localStorage } from './localStorage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AppNav from './Components/Navbar.jsx';
 import MonthlyBudgetView from './Views/MonthlyBudgetView';
 
+const today = new Date();
+const currentMonth = today.getMonth() + 1 + '-' + today.getFullYear();
 
+const reducer = (prevState, updatedProperty) => ({
+  ...prevState,
+  ...updatedProperty,
+});
 
-//navbar at top for buget / transactions / main <---- use list component tabs instead of navbar maybe
-//accounts overview swipes from left
-
- 
+////
 function App() {
-  const [selectedMonth, setSelectedMonth] = useState('jan_2021');
-  const [accounts, updateAccounts] = useState(localStorageData.accounts);
-  const [monthData, updateMonthData] = useState(localStorageData.months);
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  let monthRoot = localStorageData.months[selectedMonth];
+  const [categories, setCategories] = useReducer(reducer, monthRoot.categories);
+  const [monthData, setMonthData] = useReducer(reducer, monthRoot.data);
+
+  useEffect(() => {
+    monthRoot = localStorageData.months[selectedMonth];
+    setCategories(monthRoot.categories);
+    setMonthData(monthRoot.data);
+  }, [selectedMonth]);
+
+  const contextData = {
+    selectedMonth, setSelectedMonth, categories, setCategories, monthRoot
+  }
 
 
   return (
-    <div className="App">
-      <div id="currentView" >
-      <MonthlyBudgetView month={localStorageData.months[selectedMonth]}/>
+    <localStorage.Provider value={contextData}>
+      <div className="App">
+        <AppNav />
+        <div id="currentView" >
+        <MonthlyBudgetView monthData={monthData} categories={categories}/>
+        </div>
       </div>
-    </div>
+    </localStorage.Provider>
   );
 }
 

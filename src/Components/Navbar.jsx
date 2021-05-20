@@ -1,6 +1,8 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
+
+const AppNav = () => (
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="#home">Budge</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -18,3 +20,6 @@ import Nav from 'react-bootstrap/Nav'
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+)
+
+export default AppNav;

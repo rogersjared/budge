@@ -17,7 +17,7 @@ const CategoryGroup = ({ type, categories }) => {
             </thead>
             <tbody>
                 {categories.map((category, index) => (
-                    <CategoryEntry category={category} key={index} />
+                    <CategoryEntry category={category} categoryType={type} index={index} />
                 ))}
             </tbody>
         </Table>
