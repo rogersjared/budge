@@ -5,7 +5,9 @@ import IncomeTransfer from '../Components/TransactionsComps/IncomeTransfer.jsx';
 
 // import IncomeTransfer from '../TransactionsComps/IncomeTransfer.jsx';
 
-const TransactionsView = ({ expenses, incomeTransfers }) => {
+const TransactionsView = ({ transactions }) => {
+  const { expenses, incomeTransfers } = transactions;
+  
   return (
     <>
       <h1>Expenses</h1>

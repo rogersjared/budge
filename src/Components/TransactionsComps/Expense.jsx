@@ -3,10 +3,14 @@ import { GetLocalStorage } from '../../localStorage.js';
 
 const Expense = ({ expense, index }) => {
   const { expenseId, timestamp, payee, category, account, amount} = expense;
-  // const { setExpenses, accounts } = GetLocalStorage();
+  const { setTransactions, transactions, accounts } = GetLocalStorage();
   
   const updateExpense = (event) => {
-    console.log(event.target.name, event.target.value);
+    const update = transactions.expenses.slice();
+    update[index][event.target.name] = event.target.value;
+    setTransactions({
+      expenses: update
+     });
   }
 
   return (

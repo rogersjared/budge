@@ -61,9 +61,7 @@ function App() {
   //Data for selected month
   const [categories, setCategories] = useReducer(reducer, monthRoot.categories);
   const [monthData, setMonthData] = useReducer(reducer, monthRoot.data);
-  const [expenses, setExpenses] = useReducer(reducer, monthRoot.transactions.expenses);
-  const [incomeTransfers, setIncomeTransfers] = useReducer(reducer, monthRoot.transactions.incomeTransfers);
-
+  const [transactions, setTransactions] = useReducer(reducer, monthRoot.transactions)
 
   //-----------------------------------------------------------------------------//
   //    --------------------    //Data Aggregation\\    ---------------------
@@ -84,7 +82,7 @@ function App() {
   //    -------------------    //Centralized Access\\    ---------------------
   //-----------------------------------------------------------------------------//
   const contextData = {
-    categories, setCategories, expenses, setExpenses, incomeTransfers, setIncomeTransfers
+    categories, setCategories, transactions, setTransactions
   }
   
 //-----------------------------------------------------------------------------//
@@ -93,7 +91,7 @@ function App() {
 // ----    ----    ----    ----    ----    ----    ----    ----    ----    ----    //
 //                                 .-'   `'.
 //                                /         \
-//                                |         ;
+//                                |  -app-  ;
 //                                |         |           ___.--,
 //                       _.._     |0) ~ (0) |    _.---'`__.-( (_.
 //                __.--'`_.. '.__.\    '--. \_.-' ,.--'`     `""`
@@ -119,7 +117,7 @@ function App() {
         <div id="currentView" >
         <MonthlyBudgetView monthData={monthData} categories={categories}/>
         </div>
-        <TransactionsView expenses={expenses} incomeTransfers={incomeTransfers} />
+        <TransactionsView transactions={transactions} />
       </div>
     </localStorage.Provider>
   );
