@@ -3,8 +3,11 @@ import { localStorageData, localStorage } from './localStorage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNav from './Components/Navbar.jsx';
 import MonthlyBudgetView from './Views/MonthlyBudgetView';
+import TransactionsView from './Views/TransactionsView';
 
-//------------------------------Helper Funcs / Expressions ------------------------------------//
+//-----------------------------------------------------------------------------//
+  //    -------------     //Helper Funcs & Expressions\\    --------------- 
+  //-----------------------------------------------------------------------------//
 
 const today = new Date();
 const currentMonth = today.getMonth() + 1 + '-' + today.getFullYear();
@@ -48,6 +51,7 @@ function App() {
   //-----------------------------------------------------------------------------//
   //    --------------------     //State Management\\     --------------------    
   //-----------------------------------------------------------------------------//
+
   //Selected Month
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   let monthRoot = localStorageData.months[selectedMonth];
@@ -57,11 +61,13 @@ function App() {
   //Data for selected month
   const [categories, setCategories] = useReducer(reducer, monthRoot.categories);
   const [monthData, setMonthData] = useReducer(reducer, monthRoot.data);
-  //-------------------------------------------------------------------------------//
-  
+  const [expenses, setExpenses] = useReducer(reducer, monthRoot.transactions.expenses);
+  const [incomeTransfers, setIncomeTransfers] = useReducer(reducer, monthRoot.transactions.incomeTransfers);
 
 
-  //------------------------------ //Data Aggregation\\ --------------------------------
+  //-----------------------------------------------------------------------------//
+  //    --------------------    //Data Aggregation\\    ---------------------
+  //-----------------------------------------------------------------------------//
   useEffect(()=>{
     const budgeted = compileSums(categories, 'budgeted');
     const funded = compileSums(categories, 'funded');
@@ -74,14 +80,17 @@ function App() {
   }, [monthData]);
 
 
-  //-------------------------- //Centralized Access\\ ----------------------------
+  //-----------------------------------------------------------------------------//
+  //    -------------------    //Centralized Access\\    ---------------------
+  //-----------------------------------------------------------------------------//
   const contextData = {
-    selectedMonth, setSelectedMonth, categories, setCategories, 
+    categories, setCategories, expenses, setExpenses, incomeTransfers, setIncomeTransfers
   }
   
-//-------------------------------------------------------------------------------------------------//
-//--------------------------------  RELEASE        ------------------------------------------------//
-//------------------            T H E    A P P                -----------------------------------//
+//-----------------------------------------------------------------------------//
+//----    ----    ----    ----   -  RELEASE    ----    ----    ----    ----    ---//
+//   ----    ----    ----    --  T H E    A P P  ----    ----    ----    ----    ----   //
+// ----    ----    ----    ----    ----    ----    ----    ----    ----    ----    //
 //                                 .-'   `'.
 //                                /         \
 //                                |         ;
@@ -99,7 +108,9 @@ function App() {
 //                 `--~`   ) )    .-'.'      '.'.  | (
 //                        (/`    ( (`          ) )  '-;
 //                         `      '-;         (-'
-//---------------------------------------------------------------------------------------------//
+//----    ----    ----    ----    ----    ----    ----    ----    ----    ----    ---//
+//   ----    ----    ----    ----    ----    ----    ----    ----    ----    ----   //
+// ----    ----    ----    ----    ----    ----    ----    ----    ----    ----    //
 
   return (
     <localStorage.Provider value={contextData}>
@@ -108,6 +119,7 @@ function App() {
         <div id="currentView" >
         <MonthlyBudgetView monthData={monthData} categories={categories}/>
         </div>
+        <TransactionsView expenses={expenses} incomeTransfers={incomeTransfers} />
       </div>
     </localStorage.Provider>
   );

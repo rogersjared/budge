@@ -36,30 +36,51 @@ const localStorageData = {
       },
       categories: {
         variable: [{
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }, {
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }],
         monthly: [{
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }]
       },
-      transactions: [{
-        month: 'jan_2021',
-        category: '',
-        amount: '',
-        accountId: '',
-        type: 'income'
-      }]
+      transactions: {
+        expenses: [{
+          expenseId: 2,
+          month: '4-2021',
+          timestamp: '',
+          payee: 'test',
+          category: '',
+          amount: 500,
+          accountId: '',
+        }, {
+          expenseId: 3,
+          timestamp: '',
+          payee: 'test 2',
+          category: '',
+          amount: 200,
+          accountId: '',
+        }],
+        incomeTransfers: [{
+          incomeTransferId: 3,
+          timestamp: '',
+          toAccount: '',
+          fromAccount: '',
+          amount: 0,
+        }]
+      }
     },
     '4-2021': {
       data: {
@@ -70,31 +91,45 @@ const localStorageData = {
       },
       categories: {
         variable: [{
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }, {
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }],
         monthly: [{
+          categoryId: 0,
           name: '',
           budgeted: 0,
           funded: 0, 
           spent: 0,
         }]
       },
-      transactions: [{
-        month: 'feb_2021',
-        timestamp: '',
-        category: '',
-        amount: 0,
-        accountId: '',
-        type: 'income'
-      }]
+      transactions: {
+        expenses: [{
+          expenseId: 1,
+          month: '4-2021',
+          timestamp: '',
+          payee: '',
+          category: '',
+          amount: 0,
+          accountId: '',
+        }],
+        incomeTransfers: [{
+          incomeTransferId: 2,
+          month: '4-2021',
+          timestamp: '',
+          toAccount: '',
+          fromAccount: '',
+          amount: 0,
+        }]
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ const CategoryGroup = ({ type, categories }) => {
 
     return (
         <>
-        <h3>{type}</h3>
+        <h3>{type.replace(/(^\w|\s\w)/g, m => m.toUpperCase())}</h3>
         <Table striped bordered hover>
             <thead>
                 <tr>
@@ -17,7 +17,8 @@ const CategoryGroup = ({ type, categories }) => {
             </thead>
             <tbody>
                 {categories.map((category, index) => (
-                    <CategoryEntry category={category} categoryType={type} index={index} />
+                    <CategoryEntry category={category} categoryType={type} index={index} key={'category'+index}/>
+                    
                 ))}
             </tbody>
         </Table>
