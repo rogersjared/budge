@@ -29,7 +29,9 @@ const localStorageData = {
       data: {
         monthName: 'May',
         monthYear: 2021,
-        income: 0,
+        income: 2000,
+        budgeted: 0,
+        funded: 0,
         spent: 0,
       },
       categories: {
@@ -89,7 +91,7 @@ const localStorageData = {
         month: 'feb_2021',
         timestamp: '',
         category: '',
-        amount: '',
+        amount: 0,
         accountId: '',
         type: 'income'
       }]

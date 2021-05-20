@@ -18,8 +18,8 @@ const CategoryEntry = ( { category, categoryType, index }) => {
     return (
         <tr>
            <td><input name='name' value={category.name} onChange={updateColumn}/></td>
-           <td><input name='budgeted' value={category.budgeted} onChange={updateColumn}></input></td>
-            <td>{category.funded}</td>
+           <td><input name='budgeted' value={category.budgeted} onChange={updateColumn} /></td>
+            <td><input name='funded' value={category.funded} onChange={updateColumn} /></td>
             <td>{category.spent}</td>
         </tr>
     )
