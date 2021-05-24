@@ -34,42 +34,48 @@ const localStorageData = {
         funded: 0,
         spent: 0,
       },
-      categories: {
-        variable: [{
-          categoryId: 0,
-          name: '',
+      categoryData: {
+        categoryGroups: {
+          variable: [1, 2],
+          monthly: [3],
+        },
+        categories: {
+          1: {
+          categoryId: 1,
+          name: 'test',
           budgeted: 0,
           funded: 0, 
           spent: 0,
-        }, {
-          categoryId: 0,
-          name: '',
+          }, 
+          2:{
+          categoryId: 2,
+          name: 'test2',
           budgeted: 0,
           funded: 0, 
           spent: 0,
-        }],
-        monthly: [{
-          categoryId: 0,
-          name: '',
+          }, 
+          3:{
+          categoryId: 3,
+          name: 'test3',
           budgeted: 0,
-          funded: 0, 
+          funded: 100, 
           spent: 0,
-        }]
+          }
+        }
       },
       transactions: {
         expenses: [{
           expenseId: 2,
-          month: '4-2021',
           timestamp: '',
           payee: 'test',
-          category: '',
+          categoryId: 1,
           amount: 500,
           accountId: '',
         }, {
           expenseId: 3,
           timestamp: '',
           payee: 'test 2',
-          category: '',
+          categoryId: 2,
           amount: 200,
           accountId: '',
         }],
@@ -83,53 +89,6 @@ const localStorageData = {
       }
     },
     '4-2021': {
-      data: {
-        monthName: 'April',
-        monthYear: 2021,
-        income: 0,
-        spent: 0,
-      },
-      categories: {
-        variable: [{
-          categoryId: 0,
-          name: '',
-          budgeted: 0,
-          funded: 0, 
-          spent: 0,
-        }, {
-          categoryId: 0,
-          name: '',
-          budgeted: 0,
-          funded: 0, 
-          spent: 0,
-        }],
-        monthly: [{
-          categoryId: 0,
-          name: '',
-          budgeted: 0,
-          funded: 0, 
-          spent: 0,
-        }]
-      },
-      transactions: {
-        expenses: [{
-          expenseId: 1,
-          month: '4-2021',
-          timestamp: '',
-          payee: '',
-          category: '',
-          amount: 0,
-          accountId: '',
-        }],
-        incomeTransfers: [{
-          incomeTransferId: 2,
-          month: '4-2021',
-          timestamp: '',
-          toAccount: '',
-          fromAccount: '',
-          amount: 0,
-        }]
-      }
     }
   }
 }

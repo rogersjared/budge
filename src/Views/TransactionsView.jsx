@@ -2,14 +2,18 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Expense from '../Components/TransactionsComps/Expense.jsx';
 import IncomeTransfer from '../Components/TransactionsComps/IncomeTransfer.jsx';
+import Container from 'react-bootstrap/Container'
 
 // import IncomeTransfer from '../TransactionsComps/IncomeTransfer.jsx';
 
 const TransactionsView = ({ transactions }) => {
   const { expenses, incomeTransfers } = transactions;
-  
+
   return (
+    <Container className="justify-content-md-left">
     <>
+    <br />
+    <br />
       <h1>Expenses</h1>
       <Table striped bordered hover>
         <thead>
@@ -27,14 +31,16 @@ const TransactionsView = ({ transactions }) => {
           ))}
         </tbody>
       </Table>
-      
+      <br />
+      <br />
+      <br />
       <h1>Income &#38; Transfers</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Date</th>
-            <th>From Account:</th>
             <th>To Account:</th>
+            <th>From Account:</th>
             <th>Amount</th>
           </tr>
         </thead>
@@ -45,6 +51,7 @@ const TransactionsView = ({ transactions }) => {
         </tbody>
       </Table> 
   </>
+  </Container>
   );
 };
 
